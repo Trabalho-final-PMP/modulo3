@@ -1,0 +1,25 @@
+name: Deploy - Modulo3
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Docker - Login
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Docker - Build
+        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/modulo-3:latest .
+
+      - name: Docker - Deploy
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/modulo-3:latest
