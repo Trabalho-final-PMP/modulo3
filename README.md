@@ -1,4 +1,4 @@
-# Módulo1 - CRUD de pessoas
+# Módulo3 - Kafka Consumer
 
 Este projeto é uma aplicação backend construída com **Spring Boot**, **Kafka** e **Zookepper**
 
